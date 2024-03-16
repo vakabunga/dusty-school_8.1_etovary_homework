@@ -3,9 +3,9 @@ import './App.css';
 import { Cart } from './components/cart/Cart';
 
 const product = {
-  productDiscont: undefined,
+  productDiscont: 25,
   productName: 'Портативная Медицинская Сумка',
-  productOldPrice: undefined,
+  productOldPrice: '1645',
   productPhotoAltText: 'Портативная Медицинская Сумка',
   productPrice: '1450',
   productRate: 4.7,
