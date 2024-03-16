@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Cart } from './components/cart/Cart';
 
-function App() {
+const product = {
+  productDiscont: undefined,
+  productName: 'Портативная Медицинская Сумка',
+  productOldPrice: undefined,
+  productPhotoAltText: 'Портативная Медицинская Сумка',
+  productPrice: '1450',
+  productRate: 4.7,
+  productSold: 123,
+};
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Cart
+        productDiscount={product.productDiscont}
+        productName={product.productName}
+        productOldPrice={product.productOldPrice}
+        productPhotoAltText={product.productPhotoAltText}
+        productPrice={product.productPrice}
+        productRate={product.productRate}
+        productSold={product.productSold}
+      />
     </div>
   );
-}
+};
 
-export default App;
+export { App };
