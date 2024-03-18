@@ -9,7 +9,7 @@
   width: 159px;
 }
 
-.Cart-Product-discount {
+.Cart-ProductPhotoContainer-ProductDiscount {
   background: linear-gradient(268.87deg, #298eeb -4.73%, #4149ff 101.32%);
 
   border-radius: 10px;
@@ -29,11 +29,11 @@
   top: 100px;
 }
 
-.Cart-Product-info {
+.Cart-ProductInfo {
   padding: 0 8px;
 }
 
-.Cart-Product-name {
+.Cart-ProductInfo-ProductName {
   font-size: 12px;
   font-weight: 400;
   letter-spacing: -0.41px;
@@ -45,7 +45,7 @@
   text-wrap: nowrap;
 }
 
-.Cart-Product-old-price {
+.Cart-ProductInfo-ProductOldPrice {
   color: #8e969b;
   font-size: 11px;
   font-weight: 500;
@@ -53,17 +53,17 @@
   text-decoration: line-through;
 }
 
-.Cart-Product-photo {
+.Cart-ProductPhotoContainer-ProductPhoto {
   border-radius: 10px 10px 0 0;
   height: 127px;
   width: 161px;
 }
 
-.Cart-Product-photo-container {
+.Cart-ProductPhotoContainer {
   position: relative;
 }
 
-.Cart-Product-price {
+.Cart-ProductInfo-ProductPrice {
   color: #2c3e4f;
   font-size: 14px;
   font-weight: 600;
@@ -72,13 +72,13 @@
   margin-top: 10px;
 }
 
-.Cart-Product-stats {
+.Cart-ProductInfo-ProductStats {
   display: flex;
   gap: 8px;
 }
 
-.Cart-Product-stats-Rate,
-.Cart-Product-stats-Sold {
+.Cart-ProductInfo-ProductStats-Rate,
+.Cart-ProductInfo-ProductStats-Sold {
   color: #2c3e4f;
   font-size: 12px;
   font-weight: 400;
@@ -87,10 +87,6 @@
   margin-top: 5px;
 }
 
-.Cart-Product-stats-Sold {
+.Cart-ProductInfo-ProductStats-Sold {
   color: #8e969b;
-}
-
-.hidden {
-  display: none;
 }

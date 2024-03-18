@@ -4,30 +4,39 @@ import './Cart.css';
 import { cnCart } from './Cart.classname';
 import CartProductPhoto from './Cart-product-photo.png';
 
-type CartProps = {
-  productDiscount?: number;
+type ProductProps = {
   productName: string;
-  productOldPrice?: string;
   productPhotoAltText: string;
   productPrice: string;
   productRate: number;
   productSold: number;
 }
 
-const Cart: FC<CartProps> = ({ productPhotoAltText, productName, productRate, productSold, productPrice, productOldPrice, productDiscount }) => {
+type ProductDiscountProps = ProductProps & {
+  productDiscount?: number;
+  productOldPrice?: string;
+}
+
+type CartProps = ProductProps | ProductDiscountProps;
+
+function isDiscountPresent (props: CartProps): props is ProductDiscountProps {
+  return Object.prototype.hasOwnProperty.call(props, 'productDiscount');
+}
+
+const Cart: FC<CartProps> = (cartProps) => {
   return (
     <div className={cnCart()}>
-      <div className={cnCart('Product-photo-container')}>
-        <img className={cnCart('Product-photo')} src={CartProductPhoto} alt={productPhotoAltText} />
-        {productDiscount ? <div className={cnCart('Product-discount')}>-{productDiscount}%</div> : undefined}
+      <div className={cnCart('ProductPhotoContainer')}>
+        <img className={cnCart('ProductPhotoContainer-ProductPhoto')} src={CartProductPhoto} alt={cartProps.productPhotoAltText} />
+        {isDiscountPresent(cartProps) ? <div className={cnCart('ProductPhotoContainer-ProductDiscount')}>-{cartProps.productDiscount}%</div> : undefined}
       </div>
-      <div className={cnCart('Product-info')}>
-        <p className={cnCart('Product-name')}>{productName}</p>
-        <div className={cnCart('Product-stats')}>
-          <p className={cnCart('Product-stats-Rate')}>{productRate}⭐</p>
-          <p className={cnCart('Product-stats-Sold')}>{productSold} купили</p>
+      <div className={cnCart('ProductInfo')}>
+        <p className={cnCart('ProductInfo-ProductName')}>{cartProps.productName}</p>
+        <div className={cnCart('ProductInfo-ProductStats')}>
+          <p className={cnCart('ProductInfo-ProductStats-Rate')}>{cartProps.productRate}⭐</p>
+          <p className={cnCart('ProductInfo-ProductStats-Sold')}>{cartProps.productSold} купили</p>
         </div>
-        <p className={cnCart('Product-price')}>{productPrice}₽ {productOldPrice ? <span className={cnCart('Product-old-price')}>{productOldPrice}₽</span> : undefined}</p>
+        <p className={cnCart('ProductInfo-ProductPrice')}>{cartProps.productPrice}₽ {isDiscountPresent(cartProps) ? <span className={cnCart('ProductInfo-ProductOldPrice')}>{cartProps.productOldPrice}₽</span> : undefined}</p>
       </div>
     </div>
   );
