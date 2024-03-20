@@ -2,7 +2,7 @@ import React from 'react';
 import { FC } from 'react';
 import './Cart.css';
 import { cnCart } from './Cart.classname';
-import CartProductPhoto from './Cart-product-photo.png';
+import ProductPhoto from './Cart-product-photo.png';
 
 type ProductProps = {
   productName: string;
@@ -13,8 +13,8 @@ type ProductProps = {
 }
 
 type ProductDiscountProps = ProductProps & {
-  productDiscount?: number;
-  productOldPrice?: string;
+  productDiscount: number;
+  productOldPrice: string;
 }
 
 type CartProps = ProductProps | ProductDiscountProps;
@@ -27,16 +27,18 @@ const Cart: FC<CartProps> = (cartProps) => {
   return (
     <div className={cnCart()}>
       <div className={cnCart('ProductPhotoContainer')}>
-        <img className={cnCart('ProductPhotoContainer-ProductPhoto')} src={CartProductPhoto} alt={cartProps.productPhotoAltText} />
-        {isDiscountPresent(cartProps) ? <div className={cnCart('ProductPhotoContainer-ProductDiscount')}>-{cartProps.productDiscount}%</div> : undefined}
+        <img className={cnCart('ProductPhotoContainerProductPhoto')} src={ProductPhoto} alt={cartProps.productPhotoAltText} />
+        {isDiscountPresent(cartProps) ? <div className={cnCart('ProductPhotoContainerProductDiscount')}>-{cartProps.productDiscount}%</div> : undefined}
       </div>
       <div className={cnCart('ProductInfo')}>
-        <p className={cnCart('ProductInfo-ProductName')}>{cartProps.productName}</p>
-        <div className={cnCart('ProductInfo-ProductStats')}>
-          <p className={cnCart('ProductInfo-ProductStats-Rate')}>{cartProps.productRate}⭐</p>
-          <p className={cnCart('ProductInfo-ProductStats-Sold')}>{cartProps.productSold} купили</p>
+        <p className={cnCart('ProductInfoProductName')}>{cartProps.productName}</p>
+        <div className={cnCart('ProductInfoProductStats')}>
+          <p className={cnCart('ProductInfoProductStatsRate')}>{cartProps.productRate}⭐</p>
+          <p className={cnCart('ProductInfoProductStatsSold')}>{cartProps.productSold} купили</p>
         </div>
-        <p className={cnCart('ProductInfo-ProductPrice')}>{cartProps.productPrice}₽ {isDiscountPresent(cartProps) ? <span className={cnCart('ProductInfo-ProductOldPrice')}>{cartProps.productOldPrice}₽</span> : undefined}</p>
+        <p className={cnCart('ProductInfoProductPrice')}>
+          {cartProps.productPrice}₽ {isDiscountPresent(cartProps) ? <span className={cnCart('ProductInfo-ProductOldPrice')}>{cartProps.productOldPrice}₽</span> : undefined}
+        </p>
       </div>
     </div>
   );
